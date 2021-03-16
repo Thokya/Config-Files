@@ -1,0 +1,20 @@
+Config { font = "xft:Inconsolata:size=12:lcdfilter-lcddefault:hintstyle=hintnone:rgba=rgb:antialias=true:autohint=false:style=bold"
+  , bgColor = "#0c0404"
+  , fgColor = "#fdf6f3"
+  , border = NoBorder
+  , borderColor = "#0c0404"
+  , alpha = 150
+  , hideOnStart = False
+  , persistent = True
+  , position = Top
+  , lowerOnStart = True
+  , commands = [
+    Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
+  , Run Date "%b %d %Y-(%H:%M)" "date" 50
+  , Run BatteryP ["BAT0"] ["-t", "|<left>%", "-L", "10", "-H", "80", "-p", "3", "--", "-O", "<fc=green>On</fc> - ", "-o", "", "-L", "-15", "-H", "-5", "-l", "red", "-m", "blue", "-h", "green"] 600
+  , Run StdinReader
+]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = " %StdinReader% }{ %battery% "
+}
